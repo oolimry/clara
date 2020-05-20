@@ -1,7 +1,8 @@
 '''
 Simulation relation
 '''
-
+from __future__ import print_function
+import __future__
 # clara imports
 from .common import debug, equals
 from .interpreter import Interpreter, RuntimeErr, UndefValue, isundef

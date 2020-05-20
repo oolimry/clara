@@ -1,7 +1,8 @@
 '''
 Generating textual feedback from repair for Python programs
 '''
-
+from __future__ import print_function
+import __future__
 from .model import Op, Var, Const, VAR_COND, VAR_RET, VAR_OUT
 
 PRIMITIVE_FUNC = ['len']
@@ -65,6 +66,8 @@ class PythonFeedback(object):
         # mapping - one-to-one mapping of variables
         # repairs - list of repairs
         # sm - structural matching betweeb locations of programs
+        totalCost = 0
+        
         for fname, (mapping, repairs, sm) in list(self.result.items()):
 
             # Copy mapping with converting '*' into a 'new_' variable
@@ -84,6 +87,8 @@ class PythonFeedback(object):
                 cost = rep.cost
                 expr1 = rep.expr1
                 self.expr_orig = rep.expr1_orig
+                
+                totalCost += cost
 
                 # Get functions and loc2
                 fnc1 = self.spec.getfnc(fname)
@@ -129,6 +134,8 @@ class PythonFeedback(object):
                     self.add(
                         "Change '%s' to '%s' %s (cost=%s)",
                         str(gen.assignmentStatement(var2, expr2)), str(gen.assignmentStatement(var2, expr1)), locdesc, cost)
+                        
+        self.add("Total Cost: %.1f", totalCost)
                 
                 
 class PythonStatementGenerator(object):

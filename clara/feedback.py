@@ -1,7 +1,8 @@
 '''
 Feedback generation from repair on multiple specifications
 '''
-
+from __future__ import print_function
+import __future__
 # Python imports
 import time
 import traceback

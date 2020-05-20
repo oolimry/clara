@@ -1,7 +1,8 @@
 '''
 C interpreter
 '''
-
+from __future__ import print_function
+import __future__
 # Python imports
 import math
 import sys

@@ -1,7 +1,8 @@
 '''
 Generating (simple, raw) textual feedback from repair
 '''
-
+from __future__ import print_function
+import __future__
 
 class RepairFeedback(object):
 
@@ -22,6 +23,8 @@ class RepairFeedback(object):
         # mapping - one-to-one mapping of variables
         # repairs - list of repairs
         # sm - structural matching betweeb locations of programs
+        
+        totalCost = 0
         for fname, (mapping, repairs, sm) in list(self.result.items()):
 
             # Copy mapping with converting '*' into a 'new_' variable
@@ -40,6 +43,8 @@ class RepairFeedback(object):
                 var2 = rep.var2
                 cost = rep.cost
                 expr1 = rep.expr1
+                
+                totalCost += cost
 
                 # Get functions and loc2
                 fnc1 = self.spec.getfnc(fname)
@@ -77,3 +82,4 @@ class RepairFeedback(object):
                 self.add(
                     "Change '%s := %s' to '%s := %s' %s (cost=%s)",
                     var2, expr2, var2, expr1, locdesc, cost)
+        self.add("Total cost: %.1f", (totalCost))

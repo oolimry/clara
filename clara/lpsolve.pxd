@@ -1,3 +1,5 @@
+from __future__ import print_function
+import __future__
 from libc.stdio cimport FILE
 
 cdef extern from "lpsolve/lp_lib.h":

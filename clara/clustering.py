@@ -1,7 +1,8 @@
 '''
 Clustering stuff (a convenience layer over matching)
 '''
-
+from __future__ import print_function
+import __future__
 class Clustering(object):
 
     def __init__(self, matching):

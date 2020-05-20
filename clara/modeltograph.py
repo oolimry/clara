@@ -1,7 +1,8 @@
 '''
 Converts Program model to a image (graph)
 '''
-
+from __future__ import print_function
+import __future__
 import pygraphviz as pgv
 
 

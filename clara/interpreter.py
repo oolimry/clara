@@ -1,7 +1,8 @@
 '''
 Common interpreter stuff
 '''
-
+from __future__ import print_function
+import __future__
 # Python imports
 import time
 

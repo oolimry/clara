@@ -3,6 +3,8 @@
 '''
 clara CLI interface
 '''
+from __future__ import print_function
+import __future__
 
 # Python imports
 import glob
@@ -80,7 +82,6 @@ Options are:
         '''
         Prints usage information (to stderr).
         '''
-
         print(self.USAGE % (sys.argv[0],), file=sys.stderr)
 
     def debug(self, msg, *args):

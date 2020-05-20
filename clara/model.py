@@ -1,7 +1,8 @@
 '''
 Program model
 '''
-
+from __future__ import print_function
+import __future__
 import re
 from functools import reduce
 
@@ -406,6 +407,8 @@ class Function(object):
         self.name = name
         self.params = list(params)
         self.rettype = rettype
+        
+        print("initialising " + self.name)
 
         self.initloc = None   # Initial location
         self.locexprs = {}   # Location -> (VarxExpr)*
@@ -747,7 +750,14 @@ class Function(object):
             s.append('-' * 39)
             
             for (var, expr) in self.locexprs[loc]:
-                s.append('  %s := %s' % (var, expr.tostring()))
+                smth = '  %s := %s' % (var, expr.tostring())
+                if isinstance(expr, Var):
+                    smth += " Is Variable"
+                if isinstance(expr, Op):
+                    smth += " Is Operation"
+                if isinstance(expr, Const):
+                    smth += " Is Constant"
+                s.append(smth)
 
             s.append('-' * 39)
 

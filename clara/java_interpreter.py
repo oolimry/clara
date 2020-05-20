@@ -1,7 +1,8 @@
 """
 JAVA interpreter
 """
-
+from __future__ import print_function
+import __future__
 # clara lib imports
 from .interpreter import Interpreter, addlanginter, RuntimeErr, UndefValue
 

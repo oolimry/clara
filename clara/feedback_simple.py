@@ -1,7 +1,8 @@
 '''
 Generating simple, but not raw textual feedback from repair
 '''
-
+from __future__ import print_function
+import __future__
 import re
 
 from .model import VAR_OUT, VAR_IN, VAR_COND, VAR_RET, Var, Op, Const

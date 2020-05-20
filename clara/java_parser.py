@@ -1,7 +1,8 @@
 '''
 JAVA parser
 '''
-
+from __future__ import print_function
+import __future__
 # clara lib imports
 from .parser import Parser, ParseError, addlangparser, NotSupported, ParseError
 

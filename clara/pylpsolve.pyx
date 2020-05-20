@@ -1,7 +1,8 @@
 '''
 Simple Python interface for lpsolve
 '''
-
+from __future__ import print_function
+import __future__
 from array import array
 from cpython cimport array as c_array
 from libc.stdio cimport stdout, stderr
