@@ -3,7 +3,12 @@ Generating (simple, raw) textual feedback from repair
 '''
 from __future__ import print_function
 import __future__
+import math
 
+def normalise(cost):
+	k = 15
+	return math.exp(-cost / k)
+	
 class RepairFeedback(object):
 
     def __init__(self, impl, spec, result, cleanstrings=None):
@@ -83,3 +88,6 @@ class RepairFeedback(object):
                     "Change '%s := %s' to '%s := %s' %s (cost=%s)",
                     var2, expr2, var2, expr1, locdesc, cost)
         self.add("Total cost: %.1f", (totalCost))
+        self.add("Normalized score: %.3f", (normalise(totalCost)))
+        
+        
